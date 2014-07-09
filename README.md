@@ -1,4 +1,4 @@
-FAQ
-===
+Automatic FAQ Extractor for MOOCs
+=================================
 
-Automatic FAQ extractor for MOOC
+Codes for creating an auto FAQ extractor for online courses.
