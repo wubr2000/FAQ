@@ -119,7 +119,13 @@ for c in concat_comments:
 grouped_questions = []
 for i in concat_comments.index:
     q = forum.body[forum.forum_post_id == i]
-    grouped_questions.append(q)
+    grouped_questions.append(q.iloc[0])
+
+#grouped_questions[:5]
+
+# <codecell>
+
+grouped_comments[:5]
 
 # <markdowncell>
 
@@ -192,12 +198,15 @@ X = TfidfTransformer().fit_transform(counts)
 
 print X.shape
 print len(grouped_comments)
-type(X)
+print type(X)
+X_transformed = X.T
+print X_transformed.shape
 
 # <codecell>
 
 #Saving the sparse matrix in a file
 io.savemat('X.mat', {'M' : X}, oned_as='column')
+io.savemat('X_transformed.mat', {'M' : X_transformed}, oned_as='column')
 
 # <codecell>
 
@@ -205,6 +214,10 @@ io.savemat('X.mat', {'M' : X}, oned_as='column')
 bag_of_words = tfidf.get_feature_names()
 outfile = open('vocab.txt', 'w')
 outfile.write("\n".join(bag_of_words))
+
+# <codecell>
+
+len(bag_of_words)
 
 # <markdowncell>
 
@@ -296,6 +309,12 @@ for topic_idx, topic in enumerate(nmf.components_):
 
 # <codecell>
 
+#Getting the W and H for NMF model where X = dot(W , H)
+W = nmf.fit_transform(X)
+H = nmf.components_
+
+# <codecell>
+
 for topic_idx, topic in enumerate(nmf.components_):
 
     words = [feature_names[i] for i in topic.argsort()[:-(n_top_words):-1]]
@@ -308,6 +327,57 @@ for topic_idx, topic in enumerate(nmf.components_):
     plt.title("Topic #%d:" % topic_idx)
     s.plot(kind='bar');
 
+# <codecell>
+
+topics_dicts = []
+
+for i in xrange(n_topics):
+    # n_top_words of keys and values
+    keys, values = zip(*sorted(zip(feature_names, H[i]), key = lambda x: x[1])[:-n_top_words:-1])
+    val_arr = np.array(values)
+    norms = val_arr / np.sum(val_arr)
+    #normalize = lambda x: int(x / (max(counter.values()) - min(counter.values())) * 90 + 10)
+    topics_dicts.append(dict(zip(keys, np.rint(norms* 300))))
+
+topics_dicts
+
+# <codecell>
+
+import vincent
+
+vincent.core.initialize_notebook()
+
+for i in xrange(n_topics):
+    word_cloud = vincent.Word(topics_dicts[i])
+    word_cloud.width = 400
+    word_cloud.height = 400
+    word_cloud.padding = 0
+    word_cloud.display()
+
+#word_cloud.grammar();
+
+# <markdowncell>
+
+# ##Get the top 5 questions corresponding to each NMF topic
+
+# <codecell>
+
+FAQ = []
+for t in xrange(n_topics):
+    FAQ.append([grouped_questions[i] for i in np.argsort(W.T[t])[:-6:-1]])
+    
+
+# <codecell>
+
+#Print out each topics and 5 questions that are most closely associated with that topic
+for topic_idx, topic in enumerate(nmf.components_):
+    print("Topic #%d:" % topic_idx)
+    print(" ".join( [feature_names[i] for i in topic.argsort()[:-n_top_words - 1:-1]] ))
+    print "---------------------------------------------"
+    for q in FAQ[topic_idx]:
+        print q
+        print
+
 # <markdowncell>
 
 # ##Find cosine similarity between comments and the various topics as determined by NMF
@@ -315,16 +385,18 @@ for topic_idx, topic in enumerate(nmf.components_):
 
 # <codecell>
 
-# topics_bag = []
-# for topic_idx, topic in enumerate(nmf.components_):
-#     words = [feature_names[i] for i in topic.argsort()[::-1]]
-#     scores = [topic[i] for i in topic.argsort()[::-1]]
-#     topics_bag.append(zip(scores, words))
+topics_bag = []
+for topic_idx, topic in enumerate(nmf.components_):
+    words = [feature_names[i] for i in topic.argsort()[::-1]]
+    scores = [topic[i] for i in topic.argsort()[::-1]]
+    topics_bag.append(zip(scores, words))
 
 # topics_array = pd.DataFrame(topics_bag[1])
 # topics_array.T
 # sparse.csr_matrix(topics_array)
-
+print len(topics_bag[1])
+print "-----------------------------"
+#print X[1]
 
 # <codecell>
 
@@ -465,6 +537,12 @@ for k, v in enumerate(nmf_lda):
 # ## Topic Model using Anchor word algorithm
 # 
 # - "Separability requires that each topic has some near-perfect indicator word – a word that we call the anchor word for this topic— that appears with reasonable probability in that topic but with negligible probability in all other topics (e.g., “soccer” could be an anchor word for the topic “sports”). We give a formal definition in Section 1.1. This property is particularly natural in the context of topic modeling, where the number of distinct words (dictionary size) is very large compared to the number of topics. In a typical application, it is common to have a dictionary size in the thousands or tens of thousands, but the number of topics is usually somewhere in the range from 50 to 100. Note that separability does not mean that the anchor word always occurs (in fact, a typical document may be very likely to contain no anchor words). Instead, it dictates that when an anchor word does occur, it is a strong indicator that the corresponding topic is in the mixture used to generate the document." -- [A Practical Algorithm for Topic Modeling with Provable Guarantees](http://arxiv.org/pdf/1212.4777.pdf) by Sanjeev Arora; Rong Ge; Yonatan Halpern; David Mimno; Ankur Moitra; David Sontag; Yichen Wu; Michael Zhu
+
+# <codecell>
+
+import os
+
+os.popen("/usr/local/Cellar/stanford-parser/3.3.1/libexec/lexparser.sh /usr/local/Cellar/stanford-parser/3.3.1/libexec/stupid.txt > ~/Desktop/parsed.txt")
 
 # <codecell>
 
