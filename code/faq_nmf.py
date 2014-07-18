@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from time import time
+import vincent
 
 from sklearn import metrics
 from sklearn.metrics.pairwise import linear_kernel, pairwise_distances
@@ -20,6 +21,7 @@ coursename = "Medicine/HRP258/Statistics_in_Medicine"
 #n_features = 10000
 n_top_words = 15
 n_top_questions = 5
+n_answers = 5
 ####################################
 
 def additional_stopwords(filename = pathname+"faq_stopwords.txt"):
@@ -59,7 +61,7 @@ def nmf_model(X):
     INPUT: X (bag of words)
     OUTPUT: nmf (fitted model)
 
-    calculates the optimal number of topics depending on number of comments 
+    Calculates the optimal number of topics depending on number of comments 
     '''
     #Start timer
     t0 = time()
@@ -77,51 +79,102 @@ def nmf_model(X):
 
     return nmf
 
-def FAQ(X, nmf, questions, n_top_questions):
+def Q_and_A(forum, X, nmf, questions, n_top_questions, n_answers):
     '''
     INPUT: X, nmf, questions (X matrix, fitted model, all questions in forum)
     OUTPUT: FAQ (top questions associated with each topic)
 
-
+    Figures out the top questions for each topic as determined by the NMF model
+    Returns the top 'n_top_questions' number of FAQ for each topic
+    Returns an 'n_answers' number of comments for each FAQ
     '''
     #Get the component W and H matrices for NMF model where X = dot(W , H)
     W = nmf.fit_transform(X)
     H = nmf.components_
 
-    #Get the top 5 questions associated with each topic
+    #Group the answers by questions
+    concat_comments = forum[forum.type=="Comment"].sort("comment_thread_id").groupby("comment_thread_id").body.sum()
+
+    #Initialize variables
     FAQ = []
+    top_answers = [[["" for i in range(n_answers+1)] for j in range(n_top_questions)] for k in range(nmf.n_components_)]
+
     for t in xrange(W.shape[1]):
+        #Get top n_questions closest questions to each topic
         FAQ.append([questions[i] for i in np.argsort(W.T[t])[:-n_top_questions-1:-1]])
 
-    return FAQ
+        #Loop through top n_questions closest questions to the topic
+        for q, i in enumerate(np.argsort(W.T[t])[:-n_top_questions-1:-1]):
+            #All answers for each of the closest questions
+            thread = forum[forum.comment_thread_id == concat_comments.index[i]]
+            #Append n_answers for each question
+            for a in range(len(thread)):
+                #Ranked answers based on number of "upvotes"
+                if a <= n_answers: 
+                    #Ranked answers based on number of "upvotes"
+                    #top_answers[t][n] = thread.sort("up_count", ascending = False).body.iloc[n]
+                    #Unranked/sequential answers
+                    top_answers[t][q][a] = thread.body.iloc[a]
+
+    return FAQ, top_answers
+
+def word_cloud(nmf, feature_names):
+    '''
+    Generates word clouds using the `vincent` library
+    '''
+
+    topics_dicts = []
+    H = nmf.components_
+    n_topics = nmf.n_components_
+
+    for i in xrange(n_topics):
+        # n_top_words of keys and values
+        keys, values = zip(*sorted(zip(feature_names, H[i]), key = lambda x: x[1])[:-n_top_words:-1])
+        val_arr = np.array(values)
+        norms = val_arr / np.sum(val_arr)
+        #normalize = lambda x: int(x / (max(counter.values()) - min(counter.values())) * 90 + 10)
+        topics_dicts.append(dict(zip(keys, np.rint(norms* 300))))
+
+    vincent.core.initialize_notebook()
+
+    for i in xrange(n_topics):
+        word_cloud = vincent.Word(topics_dicts[i])
+        word_cloud.width = 400
+        word_cloud.height = 400
+        word_cloud.padding = 0
+        word_cloud.display()
 
 
-
-def print_nmf(FAQ, nmf, feature_names, n_top_words):
-    #Print out each topics and 5 questions that are most closely associated with that topic
+def histograms(nmf, feature_names, n_top_words):
+    '''
+    Generates historgrams of words for each topic 
+    '''
     for topic_idx, topic in enumerate(nmf.components_):
-        print "******************************"
-        print("Important words for Topic #%d:" % (topic_idx+1))
-        print
-        print(" ".join( [feature_names[i] for i in topic.argsort()[:-n_top_words - 1:-1]] ))
-        print 
-        print "******************************"
-        print
-        # for v in FAQ[topic_idx]:
-        #     print "Question"
-        #     print "============="
-        #     print v
-        #     print
-        print FAQ[topic_idx]
+
+        words = [feature_names[i] for i in topic.argsort()[:-(n_top_words):-1]]
+        scores = [topic[i] for i in topic.argsort()[:-(n_top_words):-1]]
+
+        dicta = {word: score for score, word in zip(scores, words)}
+
+        s=pd.Series(dicta)
+        plt.figure()
+        plt.title("Topic #%d:" % topic_idx)
+        s.plot(kind='bar');
+
+
+
 
 
 f = cleaned.pull_data(pathname, filename, coursename)
 all_questions, all_comments = cleaned.questions_comments(f)
 X, feature_names = vectorize(all_comments)
 nmf = nmf_model(X)
-faq = FAQ(X, nmf, all_questions, n_top_questions)
 
-print_nmf(faq, nmf, feature_names, n_top_words)
+faq, top_answers = Q_and_A(f, X, nmf, all_questions, n_top_questions, n_answers)
 
+#print faq[0][0]
+#print top_answers[0][0][0]
 
+#word_cloud(nmf, feature_names)
+#histograms(nmf, feature_names, n_top_words)
 
