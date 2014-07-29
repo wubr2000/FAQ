@@ -367,7 +367,7 @@ def autocomplete():
 
 
 def retrieveData(sqlCommand,argList):
-    conn = psycopg2.connect("dbname=faq user=wubr2000 password=''") 
+    conn = psycopg2.connect("dbname=faq user=wubr2000 password='phantom'") 
     cur = conn.cursor()
     EX = cur.execute(sqlCommand,argList)
     result = cur.fetchall()
@@ -377,7 +377,7 @@ def retrieveData(sqlCommand,argList):
 
 def alterDB(sqlCommand,data):
     """don't forget second input (list)"""
-    conn = psycopg2.connect("dbname=faq user=wubr2000  password=''")
+    conn = psycopg2.connect("dbname=faq user=wubr2000  password='phantom'")
     cur = conn.cursor()
     EX = cur.execute(sqlCommand,data)
     conn.commit()
