@@ -209,7 +209,7 @@ def histograms(nmf, tfidf, n_top_words):
         dicta = {word: score for score, word in zip(scores, words)}
 
         s=pd.Series(dicta)
-        plt.figure()
+        #plt.figure()
         plt.title("Word Histogram for Topic #%d" % topic_idx)
         s.plot(kind='bar')
         savefig(pathname + '/static/'+'topic%d.png' % topic_idx, bbox_inches='tight')
