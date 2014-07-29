@@ -1,0 +1,149 @@
+{
+  "axes": [],
+  "data": [
+    {
+      "name": "table",
+      "transform": [
+        {
+          "font": "Helvetica Neue",
+          "fontSize": "data.val",
+          "rotate": {
+            "random": [
+              -90,
+              0
+            ]
+          },
+          "text": "data.idx",
+          "type": "wordcloud"
+        }
+      ],
+      "values": [
+        {
+          "col": "data",
+          "idx": "command",
+          "val": 10.0
+        },
+        {
+          "col": "data",
+          "idx": "csv",
+          "val": 20.0
+        },
+        {
+          "col": "data",
+          "idx": "data",
+          "val": 11.0
+        },
+        {
+          "col": "data",
+          "idx": "deducer",
+          "val": 50.0
+        },
+        {
+          "col": "data",
+          "idx": "excel",
+          "val": 12.0
+        },
+        {
+          "col": "data",
+          "idx": "file",
+          "val": 26.0
+        },
+        {
+          "col": "data",
+          "idx": "install",
+          "val": 36.0
+        },
+        {
+          "col": "data",
+          "idx": "installed",
+          "val": 19.0
+        },
+        {
+          "col": "data",
+          "idx": "library",
+          "val": 14.0
+        },
+        {
+          "col": "data",
+          "idx": "load",
+          "val": 24.0
+        },
+        {
+          "col": "data",
+          "idx": "open",
+          "val": 15.0
+        },
+        {
+          "col": "data",
+          "idx": "package",
+          "val": 30.0
+        },
+        {
+          "col": "data",
+          "idx": "packages",
+          "val": 22.0
+        },
+        {
+          "col": "data",
+          "idx": "windows",
+          "val": 12.0
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [],
+  "marks": [
+    {
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "angle": {
+            "field": "angle"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "field": "data.idx",
+            "scale": "color"
+          },
+          "font": {
+            "field": "font"
+          },
+          "fontSize": {
+            "field": "fontSize"
+          },
+          "text": {
+            "field": "data.idx"
+          },
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          }
+        }
+      },
+      "type": "text"
+    }
+  ],
+  "padding": 0,
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "color",
+      "range": "category10",
+      "type": "ordinal"
+    }
+  ],
+  "width": 300
+}

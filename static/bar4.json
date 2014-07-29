@@ -1,0 +1,149 @@
+{
+  "axes": [],
+  "data": [
+    {
+      "name": "table",
+      "transform": [
+        {
+          "font": "Helvetica Neue",
+          "fontSize": "data.val",
+          "rotate": {
+            "random": [
+              -90,
+              0
+            ]
+          },
+          "text": "data.idx",
+          "type": "wordcloud"
+        }
+      ],
+      "values": [
+        {
+          "col": "data",
+          "idx": "answers",
+          "val": 14.0
+        },
+        {
+          "col": "data",
+          "idx": "button",
+          "val": 31.0
+        },
+        {
+          "col": "data",
+          "idx": "check",
+          "val": 22.0
+        },
+        {
+          "col": "data",
+          "idx": "check button",
+          "val": 16.0
+        },
+        {
+          "col": "data",
+          "idx": "deadline",
+          "val": 33.0
+        },
+        {
+          "col": "data",
+          "idx": "final",
+          "val": 13.0
+        },
+        {
+          "col": "data",
+          "idx": "final check",
+          "val": 25.0
+        },
+        {
+          "col": "data",
+          "idx": "homework",
+          "val": 28.0
+        },
+        {
+          "col": "data",
+          "idx": "solutions",
+          "val": 15.0
+        },
+        {
+          "col": "data",
+          "idx": "submission",
+          "val": 12.0
+        },
+        {
+          "col": "data",
+          "idx": "submit",
+          "val": 44.0
+        },
+        {
+          "col": "data",
+          "idx": "submit button",
+          "val": 15.0
+        },
+        {
+          "col": "data",
+          "idx": "submit homework",
+          "val": 20.0
+        },
+        {
+          "col": "data",
+          "idx": "utc",
+          "val": 13.0
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [],
+  "marks": [
+    {
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "angle": {
+            "field": "angle"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "field": "data.idx",
+            "scale": "color"
+          },
+          "font": {
+            "field": "font"
+          },
+          "fontSize": {
+            "field": "fontSize"
+          },
+          "text": {
+            "field": "data.idx"
+          },
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          }
+        }
+      },
+      "type": "text"
+    }
+  ],
+  "padding": 0,
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "color",
+      "range": "category10",
+      "type": "ordinal"
+    }
+  ],
+  "width": 300
+}

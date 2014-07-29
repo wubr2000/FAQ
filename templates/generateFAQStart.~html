@@ -1,0 +1,53 @@
+<!-- Created: 16/07/2014 by cory -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional/EN">
+<html>
+  <head>
+    <title>Untitled</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <meta name="generator" content="PyScripter">
+    <link href="/static/style.css" rel="stylesheet">
+     <link href="/static/960_12_col.css" rel="stylesheet">
+      <link href="/static/bootstrap.min.css" rel="stylesheet">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+// will be used for popup
+function show_popup() {
+  var p = window.createPopup()
+  var pbody = p.document.body
+  pbody.style.backgroundColor = "lime"
+  pbody.style.border = "solid black 1px"
+  pbody.innerHTML = "This is a pop-up! Click outside to close."
+  p.show(150,150,200,50,document.body)
+}
+</script>
+  </head>
+  <body>
+
+<div id = "top">
+<div id = "faqly"> FAQ.LY </div>
+</div>
+
+<div class="container_12 ">
+
+{{text}}
+
+
+<div >
+<div class = "grid_3" id = "menu">
+
+</div>
+
+<div class = "grid_3 push_1 faqHelper">
+
+
+ </div>
+<div class="clear"></div>
+</div>
+
+<div class = "faqHelper">
+<form name="input" action="/" method="post">
+    <button class="btn btn-primary btn-lg" type="submit" name = "generateFAQ">Generate FAQ</button>
+    </form>
+</div>

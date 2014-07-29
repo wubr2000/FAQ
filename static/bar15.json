@@ -1,0 +1,149 @@
+{
+  "axes": [],
+  "data": [
+    {
+      "name": "table",
+      "transform": [
+        {
+          "font": "Helvetica Neue",
+          "fontSize": "data.val",
+          "rotate": {
+            "random": [
+              -90,
+              0
+            ]
+          },
+          "text": "data.idx",
+          "type": "wordcloud"
+        }
+      ],
+      "values": [
+        {
+          "col": "data",
+          "idx": "adjusted",
+          "val": 11.0
+        },
+        {
+          "col": "data",
+          "idx": "increase",
+          "val": 14.0
+        },
+        {
+          "col": "data",
+          "idx": "logistic",
+          "val": 13.0
+        },
+        {
+          "col": "data",
+          "idx": "logistic regression",
+          "val": 13.0
+        },
+        {
+          "col": "data",
+          "idx": "odds",
+          "val": 52.0
+        },
+        {
+          "col": "data",
+          "idx": "odds ratio",
+          "val": 31.0
+        },
+        {
+          "col": "data",
+          "idx": "odds ratios",
+          "val": 31.0
+        },
+        {
+          "col": "data",
+          "idx": "ratio",
+          "val": 32.0
+        },
+        {
+          "col": "data",
+          "idx": "ratios",
+          "val": 35.0
+        },
+        {
+          "col": "data",
+          "idx": "reference",
+          "val": 12.0
+        },
+        {
+          "col": "data",
+          "idx": "report",
+          "val": 8.0
+        },
+        {
+          "col": "data",
+          "idx": "risk",
+          "val": 27.0
+        },
+        {
+          "col": "data",
+          "idx": "risk ratio",
+          "val": 10.0
+        },
+        {
+          "col": "data",
+          "idx": "unadjusted",
+          "val": 10.0
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [],
+  "marks": [
+    {
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "angle": {
+            "field": "angle"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "field": "data.idx",
+            "scale": "color"
+          },
+          "font": {
+            "field": "font"
+          },
+          "fontSize": {
+            "field": "fontSize"
+          },
+          "text": {
+            "field": "data.idx"
+          },
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          }
+        }
+      },
+      "type": "text"
+    }
+  ],
+  "padding": 0,
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "color",
+      "range": "category10",
+      "type": "ordinal"
+    }
+  ],
+  "width": 300
+}

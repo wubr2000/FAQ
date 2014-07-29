@@ -1,0 +1,149 @@
+{
+  "axes": [],
+  "data": [
+    {
+      "name": "table",
+      "transform": [
+        {
+          "font": "Helvetica Neue",
+          "fontSize": "data.val",
+          "rotate": {
+            "random": [
+              -90,
+              0
+            ]
+          },
+          "text": "data.idx",
+          "type": "wordcloud"
+        }
+      ],
+      "values": [
+        {
+          "col": "data",
+          "idx": "100",
+          "val": 19.0
+        },
+        {
+          "col": "data",
+          "idx": "100 people",
+          "val": 15.0
+        },
+        {
+          "col": "data",
+          "idx": "1000",
+          "val": 17.0
+        },
+        {
+          "col": "data",
+          "idx": "event",
+          "val": 17.0
+        },
+        {
+          "col": "data",
+          "idx": "events",
+          "val": 26.0
+        },
+        {
+          "col": "data",
+          "idx": "incidence",
+          "val": 20.0
+        },
+        {
+          "col": "data",
+          "idx": "people",
+          "val": 16.0
+        },
+        {
+          "col": "data",
+          "idx": "person",
+          "val": 29.0
+        },
+        {
+          "col": "data",
+          "idx": "person year",
+          "val": 21.0
+        },
+        {
+          "col": "data",
+          "idx": "person years",
+          "val": 25.0
+        },
+        {
+          "col": "data",
+          "idx": "persons",
+          "val": 13.0
+        },
+        {
+          "col": "data",
+          "idx": "rate",
+          "val": 27.0
+        },
+        {
+          "col": "data",
+          "idx": "year",
+          "val": 26.0
+        },
+        {
+          "col": "data",
+          "idx": "years",
+          "val": 29.0
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [],
+  "marks": [
+    {
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "angle": {
+            "field": "angle"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "field": "data.idx",
+            "scale": "color"
+          },
+          "font": {
+            "field": "font"
+          },
+          "fontSize": {
+            "field": "fontSize"
+          },
+          "text": {
+            "field": "data.idx"
+          },
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          }
+        }
+      },
+      "type": "text"
+    }
+  ],
+  "padding": 0,
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "color",
+      "range": "category10",
+      "type": "ordinal"
+    }
+  ],
+  "width": 300
+}

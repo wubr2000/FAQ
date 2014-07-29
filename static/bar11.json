@@ -1,0 +1,149 @@
+{
+  "axes": [],
+  "data": [
+    {
+      "name": "table",
+      "transform": [
+        {
+          "font": "Helvetica Neue",
+          "fontSize": "data.val",
+          "rotate": {
+            "random": [
+              -90,
+              0
+            ]
+          },
+          "text": "data.idx",
+          "type": "wordcloud"
+        }
+      ],
+      "values": [
+        {
+          "col": "data",
+          "idx": "age",
+          "val": 15.0
+        },
+        {
+          "col": "data",
+          "idx": "binary",
+          "val": 19.0
+        },
+        {
+          "col": "data",
+          "idx": "correlated",
+          "val": 23.0
+        },
+        {
+          "col": "data",
+          "idx": "correlation",
+          "val": 21.0
+        },
+        {
+          "col": "data",
+          "idx": "dependent",
+          "val": 18.0
+        },
+        {
+          "col": "data",
+          "idx": "independent",
+          "val": 25.0
+        },
+        {
+          "col": "data",
+          "idx": "linear",
+          "val": 24.0
+        },
+        {
+          "col": "data",
+          "idx": "linear regression",
+          "val": 16.0
+        },
+        {
+          "col": "data",
+          "idx": "model",
+          "val": 18.0
+        },
+        {
+          "col": "data",
+          "idx": "outcome",
+          "val": 13.0
+        },
+        {
+          "col": "data",
+          "idx": "predictor",
+          "val": 15.0
+        },
+        {
+          "col": "data",
+          "idx": "regression",
+          "val": 29.0
+        },
+        {
+          "col": "data",
+          "idx": "variable",
+          "val": 28.0
+        },
+        {
+          "col": "data",
+          "idx": "variables",
+          "val": 35.0
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [],
+  "marks": [
+    {
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "angle": {
+            "field": "angle"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "field": "data.idx",
+            "scale": "color"
+          },
+          "font": {
+            "field": "font"
+          },
+          "fontSize": {
+            "field": "fontSize"
+          },
+          "text": {
+            "field": "data.idx"
+          },
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          }
+        }
+      },
+      "type": "text"
+    }
+  ],
+  "padding": 0,
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "color",
+      "range": "category10",
+      "type": "ordinal"
+    }
+  ],
+  "width": 300
+}

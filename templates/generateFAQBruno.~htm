@@ -1,0 +1,198 @@
+<!-- Created: 16/07/2014 by cory -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional/EN">
+<html>
+  <head>
+    <title>Untitled</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <meta name="generator" content="PyScripter">
+    <link href="/static/style.css" rel="stylesheet">
+    <link href="/static/960_12_col.css" rel="stylesheet">
+
+    <link href="/static/simple-sidebar.css" rel="stylesheet">
+    <link href="/static/font-awesome.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <title>Vega Scaffold</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="http://d3js.org/d3.geo.projection.v0.min.js" charset="utf-8"></script>
+    <script src="http://trifacta.github.com/vega/vega.js"></script>
+    <script src="http://trifacta.github.io/vega/lib/topojson.js"></script>
+    <script src="http://trifacta.github.com/vega/editor/specs.js"></script>
+    <script src="http://trifacta.github.com/vega/lib/d3.layout.cloud.js"></script>
+
+  </head>
+  <body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand"><a href="/">Home</a></li>
+          <li><a href="/statistical"><i class="fa fa-users"></i>&nbsp;&nbsp;Statistical Learning</a></li>
+          <li><a href="/medicine"><i class="fa fa-users"></i>&nbsp;&nbsp;Medicine and Statistics</a></li>
+          <li><a href="/environmental"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;Environmental Physiology</a></li>
+          <li><a href="/engineering"><i class="fa fa-users"></i>&nbsp;&nbsp;Engineering</a></li>
+          <li><a href="/psych"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;Pscyhology</a></li>
+          <li><a href="/query"><i class="fa fa-rebel"></i>&nbsp;&nbsp;&nbsp;Real-time Query</a></li>
+        </ul>
+        </div>
+
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+        <div class="content-header">
+          <h1>
+            <div id = "top">
+                <a id="menu-toggle" href="#"><i class="fa fa-bars"></i></a>
+                Faq.ly
+            </div>
+          </h1>
+        </div>
+
+        <!-- Keep all page content within the page-content inset div! -->
+        <div class="page-content inset">
+
+
+
+
+            <div class="container_12 ">
+
+            {{text}}
+
+
+            <div >
+            <div class = "grid_3" id = "menu">
+
+            </div>
+
+            <div class = "grid_3 push_1 faqHelper">
+
+
+             </div>
+            <div class="clear"></div>
+            </div>
+
+            <br>
+            <div class = "faqHelper">
+            <form name="input" action="{{postAddress}}" method="post">
+                <button class="btn btn-primary btn-lg" type="submit" name = "generateFAQ">Generate FAQ</button>
+                 <input id = "inputValue"  type="text" name="algoValue" value="{{n_topics}}">
+
+                </form>
+            </div>
+            {{debug}}
+
+            <!-- change 5 to global variable for number of questions-->
+
+            {% for i in range ( 5) %}
+            <div  class = "questionBox">
+
+            <br><br><br>
+
+
+            {% set subList = wordList[i] %}
+            {% for word in subList %}
+
+             <button class="btn btn-default btn-sm edit" type="button">{{word}}</button>
+            {% endfor %}
+            <br><br><br>
+
+           <div class = "grid_4 push_1">
+            <img  id = "histogram" src="{{pngList[i]}}" alt="some_text"> <br>
+            <div class="clear"></div>
+            <div class = "grid_3 " id = "vis{{i}}"> </div>
+             </div>
+
+
+            <div class = "grid_4 push_3">
+            {% for j in range(5) %}
+            <form name='' action='http://localhost:5000/edit' method='post' >
+               <!--<input type="checkbox" name="vehicle" value="Bike">-->  <span id = "questionText"> {{questionList[0][i][j][2][0:100]}} </span>
+
+
+               <span id = "hidden">
+                <input type="text" name="questionID" value = " {{questionList[0][i][j][1]}}">
+                <input type="text" name="question" value = " {{questionList[0][i][j][2]}}">
+                <input type="text" name="postAddress" value = " {{postAddress}}">
+               </span>
+
+
+            <div>
+            <button type="submit" class="btn btn-default btn-sm edit" onclick = "show_popup()">edit/ view answers</button>
+               </form>
+            </div>
+            <br>
+            {% endfor %}
+
+<!--
+            <form action="/" method="post">
+             <span id = "hidden">
+             <input  type="text" name="deleteQuestion">
+             </span>
+            <input class="btn btn-danger" type="submit" value="Delete">
+            </form>
+            <br>
+
+            <form action="/" method="post">
+            <input class="btn btn-danger" type="submit" value="Delete Group">
+            <input hidden  type="text" name="groupID" value = "{{i}}" >
+            </form>-->
+
+
+            </div>
+            </div>
+
+
+
+            {% endfor %}
+            <form name="input" action='http://localhost:5000/output' method="post">
+            <br>
+            <input id = "finished"  class="btn btn-primary btn-lg" type="submit" value="Finished" target= '_blank' >
+            </form>
+
+        </div>
+
+    </div>
+
+
+  </body>
+
+<script type="text/javascript">
+// parse a spec and create a visualization view
+
+function parse(spec, i) {
+  vg.parse.spec(spec, function(chart) {
+    chart({el:"#vis" + i}).update();
+  });
+}
+
+arr = ["/static/bar0.json","/static/bar1.json","/static/bar2.json","/static/bar3.json",
+      "/static/bar4.json","/static/bar5.json","/static/bar6.json","/static/bar7.json","/static/bar8.json",
+      "/static/bar9.json","/static/bar10.json","/static/bar11.json","/static/bar12.json","/static/bar13.json",
+      "/static/bar14.json","/static/bar15.json","/static/bar16.json","/static/bar17.json","/static/bar18.json","/static/bar19.json",
+      "/static/bar20.json","/static/bar21.json","/static/bar22.json","/static/bar23.json","/static/bar24.json","/static/bar25.json",
+      "/static/bar26.json","/static/bar27.json","/static/bar28.json","/static/bar29.json","/static/bar30.json","/static/bar31.json",
+      "/static/bar32.json","/static/bar33.json","/static/bar34.json","/static/bar35.json","/static/bar36.json","/static/bar37.json",
+      "/static/bar38.json","/static/bar39.json","/static/bar40.json"]
+
+for(var i=0; i < arr.length; i++) {
+  parse(arr[i], i);
+}
+
+//menu toggle function
+$("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("active");
+});
+
+
+</script>
+
+</html>

@@ -1,0 +1,149 @@
+{
+  "axes": [],
+  "data": [
+    {
+      "name": "table",
+      "transform": [
+        {
+          "font": "Helvetica Neue",
+          "fontSize": "data.val",
+          "rotate": {
+            "random": [
+              -90,
+              0
+            ]
+          },
+          "text": "data.idx",
+          "type": "wordcloud"
+        }
+      ],
+      "values": [
+        {
+          "col": "data",
+          "idx": "16",
+          "val": 20.0
+        },
+        {
+          "col": "data",
+          "idx": "16th",
+          "val": 13.0
+        },
+        {
+          "col": "data",
+          "idx": "45",
+          "val": 17.0
+        },
+        {
+          "col": "data",
+          "idx": "aug",
+          "val": 12.0
+        },
+        {
+          "col": "data",
+          "idx": "august",
+          "val": 15.0
+        },
+        {
+          "col": "data",
+          "idx": "available",
+          "val": 13.0
+        },
+        {
+          "col": "data",
+          "idx": "exam",
+          "val": 54.0
+        },
+        {
+          "col": "data",
+          "idx": "final",
+          "val": 36.0
+        },
+        {
+          "col": "data",
+          "idx": "final exam",
+          "val": 50.0
+        },
+        {
+          "col": "data",
+          "idx": "grade",
+          "val": 11.0
+        },
+        {
+          "col": "data",
+          "idx": "posted",
+          "val": 14.0
+        },
+        {
+          "col": "data",
+          "idx": "quizzes",
+          "val": 16.0
+        },
+        {
+          "col": "data",
+          "idx": "score",
+          "val": 16.0
+        },
+        {
+          "col": "data",
+          "idx": "week",
+          "val": 13.0
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [],
+  "marks": [
+    {
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "angle": {
+            "field": "angle"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "field": "data.idx",
+            "scale": "color"
+          },
+          "font": {
+            "field": "font"
+          },
+          "fontSize": {
+            "field": "fontSize"
+          },
+          "text": {
+            "field": "data.idx"
+          },
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          }
+        }
+      },
+      "type": "text"
+    }
+  ],
+  "padding": 0,
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "color",
+      "range": "category10",
+      "type": "ordinal"
+    }
+  ],
+  "width": 300
+}

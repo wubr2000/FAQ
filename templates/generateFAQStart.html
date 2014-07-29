@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional/EN">
+<html>
+  <head>
+    <title>FAQ</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <meta name="generator" content="PyScripter">
+    <link href="/static/style.css" rel="stylesheet">
+    <link href="/static/960_12_col.css" rel="stylesheet">
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div id = "center-logo"><img src="/static/faqly_logo.png" alt="faq_logo"></img></div>
+
+    <div class="container_12 ">
+
+    {{text}}
+
+
+    <div >
+    <div class = "grid_3" id = "menu">
+
+    </div>
+
+    <div class = "grid_3 push_1 faqHelper">
+
+
+     </div>
+    <div class="clear"></div>
+    </div>
+
+    <div class = "faqHelper">
+    <form name="input" action="/faq" method="post" class="generate-faq">
+        <button class="btn btn-success btn-lg" type="submit" name = "generateFAQ">Generate FAQ</button>
+        </form>
+
+    </div>
+
+    <div id="waitingSpinner"><img src="/static/loader.gif" alt="waiting..."></img><p><b>Building model...</b></p><p><b>(Usually takes a minute)</b></p></div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/static/javascripts/faq.js"></script>
+  </body>
+</html>

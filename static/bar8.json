@@ -1,0 +1,149 @@
+{
+  "axes": [],
+  "data": [
+    {
+      "name": "table",
+      "transform": [
+        {
+          "font": "Helvetica Neue",
+          "fontSize": "data.val",
+          "rotate": {
+            "random": [
+              -90,
+              0
+            ]
+          },
+          "text": "data.idx",
+          "type": "wordcloud"
+        }
+      ],
+      "values": [
+        {
+          "col": "data",
+          "idx": "able",
+          "val": 12.0
+        },
+        {
+          "col": "data",
+          "idx": "course",
+          "val": 18.0
+        },
+        {
+          "col": "data",
+          "idx": "distinction",
+          "val": 15.0
+        },
+        {
+          "col": "data",
+          "idx": "enjoyed",
+          "val": 50.0
+        },
+        {
+          "col": "data",
+          "idx": "fun",
+          "val": 9.0
+        },
+        {
+          "col": "data",
+          "idx": "glad",
+          "val": 74.0
+        },
+        {
+          "col": "data",
+          "idx": "hear",
+          "val": 10.0
+        },
+        {
+          "col": "data",
+          "idx": "kristin",
+          "val": 8.0
+        },
+        {
+          "col": "data",
+          "idx": "late",
+          "val": 8.0
+        },
+        {
+          "col": "data",
+          "idx": "note",
+          "val": 48.0
+        },
+        {
+          "col": "data",
+          "idx": "passing",
+          "val": 17.0
+        },
+        {
+          "col": "data",
+          "idx": "score",
+          "val": 15.0
+        },
+        {
+          "col": "data",
+          "idx": "statistics",
+          "val": 10.0
+        },
+        {
+          "col": "data",
+          "idx": "text",
+          "val": 7.0
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [],
+  "marks": [
+    {
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "angle": {
+            "field": "angle"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "field": "data.idx",
+            "scale": "color"
+          },
+          "font": {
+            "field": "font"
+          },
+          "fontSize": {
+            "field": "fontSize"
+          },
+          "text": {
+            "field": "data.idx"
+          },
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          }
+        }
+      },
+      "type": "text"
+    }
+  ],
+  "padding": 0,
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "color",
+      "range": "category10",
+      "type": "ordinal"
+    }
+  ],
+  "width": 300
+}

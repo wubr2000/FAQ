@@ -1,0 +1,149 @@
+{
+  "axes": [],
+  "data": [
+    {
+      "name": "table",
+      "transform": [
+        {
+          "font": "Helvetica Neue",
+          "fontSize": "data.val",
+          "rotate": {
+            "random": [
+              -90,
+              0
+            ]
+          },
+          "text": "data.idx",
+          "type": "wordcloud"
+        }
+      ],
+      "values": [
+        {
+          "col": "data",
+          "idx": "bit",
+          "val": 5.0
+        },
+        {
+          "col": "data",
+          "idx": "error",
+          "val": 6.0
+        },
+        {
+          "col": "data",
+          "idx": "fix",
+          "val": 29.0
+        },
+        {
+          "col": "data",
+          "idx": "ll",
+          "val": 29.0
+        },
+        {
+          "col": "data",
+          "idx": "ll try",
+          "val": 49.0
+        },
+        {
+          "col": "data",
+          "idx": "make",
+          "val": 5.0
+        },
+        {
+          "col": "data",
+          "idx": "platform team",
+          "val": 6.0
+        },
+        {
+          "col": "data",
+          "idx": "posted",
+          "val": 9.0
+        },
+        {
+          "col": "data",
+          "idx": "raj",
+          "val": 7.0
+        },
+        {
+          "col": "data",
+          "idx": "soon",
+          "val": 64.0
+        },
+        {
+          "col": "data",
+          "idx": "soon raj",
+          "val": 59.0
+        },
+        {
+          "col": "data",
+          "idx": "team",
+          "val": 5.0
+        },
+        {
+          "col": "data",
+          "idx": "try",
+          "val": 22.0
+        },
+        {
+          "col": "data",
+          "idx": "website",
+          "val": 6.0
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [],
+  "marks": [
+    {
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "angle": {
+            "field": "angle"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "field": "data.idx",
+            "scale": "color"
+          },
+          "font": {
+            "field": "font"
+          },
+          "fontSize": {
+            "field": "fontSize"
+          },
+          "text": {
+            "field": "data.idx"
+          },
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          }
+        }
+      },
+      "type": "text"
+    }
+  ],
+  "padding": 0,
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "color",
+      "range": "category10",
+      "type": "ordinal"
+    }
+  ],
+  "width": 300
+}

@@ -1,0 +1,149 @@
+{
+  "axes": [],
+  "data": [
+    {
+      "name": "table",
+      "transform": [
+        {
+          "font": "Helvetica Neue",
+          "fontSize": "data.val",
+          "rotate": {
+            "random": [
+              -90,
+              0
+            ]
+          },
+          "text": "data.idx",
+          "type": "wordcloud"
+        }
+      ],
+      "values": [
+        {
+          "col": "data",
+          "idx": "accomplishment",
+          "val": 38.0
+        },
+        {
+          "col": "data",
+          "idx": "certificate",
+          "val": 20.0
+        },
+        {
+          "col": "data",
+          "idx": "cme",
+          "val": 41.0
+        },
+        {
+          "col": "data",
+          "idx": "course",
+          "val": 18.0
+        },
+        {
+          "col": "data",
+          "idx": "credit",
+          "val": 25.0
+        },
+        {
+          "col": "data",
+          "idx": "link",
+          "val": 10.0
+        },
+        {
+          "col": "data",
+          "idx": "offer",
+          "val": 15.0
+        },
+        {
+          "col": "data",
+          "idx": "offering",
+          "val": 16.0
+        },
+        {
+          "col": "data",
+          "idx": "pace",
+          "val": 11.0
+        },
+        {
+          "col": "data",
+          "idx": "remain",
+          "val": 19.0
+        },
+        {
+          "col": "data",
+          "idx": "september",
+          "val": 16.0
+        },
+        {
+          "col": "data",
+          "idx": "statement",
+          "val": 26.0
+        },
+        {
+          "col": "data",
+          "idx": "statement accomplishment",
+          "val": 30.0
+        },
+        {
+          "col": "data",
+          "idx": "version",
+          "val": 16.0
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [],
+  "marks": [
+    {
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "angle": {
+            "field": "angle"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "field": "data.idx",
+            "scale": "color"
+          },
+          "font": {
+            "field": "font"
+          },
+          "fontSize": {
+            "field": "fontSize"
+          },
+          "text": {
+            "field": "data.idx"
+          },
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          }
+        }
+      },
+      "type": "text"
+    }
+  ],
+  "padding": 0,
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "color",
+      "range": "category10",
+      "type": "ordinal"
+    }
+  ],
+  "width": 300
+}

@@ -1,0 +1,149 @@
+{
+  "axes": [],
+  "data": [
+    {
+      "name": "table",
+      "transform": [
+        {
+          "font": "Helvetica Neue",
+          "fontSize": "data.val",
+          "rotate": {
+            "random": [
+              -90,
+              0
+            ]
+          },
+          "text": "data.idx",
+          "type": "wordcloud"
+        }
+      ],
+      "values": [
+        {
+          "col": "data",
+          "idx": "answer",
+          "val": 33.0
+        },
+        {
+          "col": "data",
+          "idx": "answers",
+          "val": 21.0
+        },
+        {
+          "col": "data",
+          "idx": "correct",
+          "val": 17.0
+        },
+        {
+          "col": "data",
+          "idx": "decimal",
+          "val": 26.0
+        },
+        {
+          "col": "data",
+          "idx": "decimal places",
+          "val": 18.0
+        },
+        {
+          "col": "data",
+          "idx": "marked",
+          "val": 14.0
+        },
+        {
+          "col": "data",
+          "idx": "nearest",
+          "val": 14.0
+        },
+        {
+          "col": "data",
+          "idx": "places",
+          "val": 16.0
+        },
+        {
+          "col": "data",
+          "idx": "question",
+          "val": 16.0
+        },
+        {
+          "col": "data",
+          "idx": "round",
+          "val": 33.0
+        },
+        {
+          "col": "data",
+          "idx": "rounded",
+          "val": 24.0
+        },
+        {
+          "col": "data",
+          "idx": "rounding",
+          "val": 33.0
+        },
+        {
+          "col": "data",
+          "idx": "tolerances",
+          "val": 13.0
+        },
+        {
+          "col": "data",
+          "idx": "wrong",
+          "val": 21.0
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [],
+  "marks": [
+    {
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "angle": {
+            "field": "angle"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "field": "data.idx",
+            "scale": "color"
+          },
+          "font": {
+            "field": "font"
+          },
+          "fontSize": {
+            "field": "fontSize"
+          },
+          "text": {
+            "field": "data.idx"
+          },
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          }
+        }
+      },
+      "type": "text"
+    }
+  ],
+  "padding": 0,
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "color",
+      "range": "category10",
+      "type": "ordinal"
+    }
+  ],
+  "width": 300
+}

@@ -1,0 +1,149 @@
+{
+  "axes": [],
+  "data": [
+    {
+      "name": "table",
+      "transform": [
+        {
+          "font": "Helvetica Neue",
+          "fontSize": "data.val",
+          "rotate": {
+            "random": [
+              -90,
+              0
+            ]
+          },
+          "text": "data.idx",
+          "type": "wordcloud"
+        }
+      ],
+      "values": [
+        {
+          "col": "data",
+          "idx": "55",
+          "val": 19.0
+        },
+        {
+          "col": "data",
+          "idx": "disease",
+          "val": 23.0
+        },
+        {
+          "col": "data",
+          "idx": "false",
+          "val": 12.0
+        },
+        {
+          "col": "data",
+          "idx": "hiv",
+          "val": 12.0
+        },
+        {
+          "col": "data",
+          "idx": "negative",
+          "val": 40.0
+        },
+        {
+          "col": "data",
+          "idx": "npv",
+          "val": 24.0
+        },
+        {
+          "col": "data",
+          "idx": "positive",
+          "val": 38.0
+        },
+        {
+          "col": "data",
+          "idx": "ppv",
+          "val": 18.0
+        },
+        {
+          "col": "data",
+          "idx": "prevalence",
+          "val": 15.0
+        },
+        {
+          "col": "data",
+          "idx": "probability",
+          "val": 12.0
+        },
+        {
+          "col": "data",
+          "idx": "sensitivity",
+          "val": 24.0
+        },
+        {
+          "col": "data",
+          "idx": "specificity",
+          "val": 18.0
+        },
+        {
+          "col": "data",
+          "idx": "test",
+          "val": 34.0
+        },
+        {
+          "col": "data",
+          "idx": "tests",
+          "val": 12.0
+        }
+      ]
+    }
+  ],
+  "height": 300,
+  "legends": [],
+  "marks": [
+    {
+      "from": {
+        "data": "table"
+      },
+      "properties": {
+        "enter": {
+          "align": {
+            "value": "center"
+          },
+          "angle": {
+            "field": "angle"
+          },
+          "baseline": {
+            "value": "middle"
+          },
+          "fill": {
+            "field": "data.idx",
+            "scale": "color"
+          },
+          "font": {
+            "field": "font"
+          },
+          "fontSize": {
+            "field": "fontSize"
+          },
+          "text": {
+            "field": "data.idx"
+          },
+          "x": {
+            "field": "x"
+          },
+          "y": {
+            "field": "y"
+          }
+        }
+      },
+      "type": "text"
+    }
+  ],
+  "padding": 0,
+  "scales": [
+    {
+      "domain": {
+        "data": "table",
+        "field": "data.idx"
+      },
+      "name": "color",
+      "range": "category10",
+      "type": "ordinal"
+    }
+  ],
+  "width": 300
+}
