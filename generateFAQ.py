@@ -1,8 +1,10 @@
 import faq_clean as cleaned
+import matplotlib
+# Force matplotlib to not use any Xwindows backend.
+matplotlib.use('Agg')
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib
 from pylab import *
 from time import time
 import vincent
@@ -200,8 +202,7 @@ def histograms(nmf, tfidf, n_top_words):
     Generates historgrams of words for each topic
     '''
 
-    # Force matplotlib to not use any Xwindows backend.
-    matplotlib.use('Agg')
+
 
     feature_names = tfidf.get_feature_names()
 
