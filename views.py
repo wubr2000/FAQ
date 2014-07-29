@@ -10,6 +10,7 @@ from generateFAQ import*
 import psycopg2
 import cPickle
 
+
 import os
 
 app = Flask(__name__)
