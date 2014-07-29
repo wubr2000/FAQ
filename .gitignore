@@ -1,3 +1,11 @@
+
+*.ttf
+data/
+.DS_Store
+.ipynb_checkpoints/
+*.csv
+*.mat
+*.xls
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

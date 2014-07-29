@@ -10,12 +10,14 @@ from generateFAQ import*
 import psycopg2
 import cPickle
 
+import os
+
 app = Flask(__name__)
 print 'server running'
 #set questions per group
 global questionsPerGroup
 questionsPerGroup = 5
-pathname = "/Users/wubr2000/Desktop/faq20/"
+pathname = os.path.dirname(os.path.realpath(__file__))+"/"
 filename = "statsLearningForum2.csv"
 
 global sessionID

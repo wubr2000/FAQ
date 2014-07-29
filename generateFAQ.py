@@ -18,8 +18,10 @@ from scipy import sparse
 
 import cPickle
 
+import os
+
 #### FILE PATHS AND NAMES ##########
-pathname = "/Users/wubr2000/Desktop/faq20/"
+pathname = os.path.dirname(os.path.realpath(__file__))+"/"
 filename = "statsLearningForum2.csv"
 coursename = "Medicine/HRP258/Statistics_in_Medicine"
 ####################################
