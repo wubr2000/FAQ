@@ -187,7 +187,7 @@ def faq():
        pngList = buildPNGList()
        #create featured word list
        wordList = createWordList()
-       return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics=int(algoValue), postAddress = "/faq",wordList= wordList,debug = '')
+       return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics=int(algoValue), postAddress = "/faq",wordList= wordList,debug = '', course = "Statistics in Medicine")
        #return render_template('test.htm', groupList= groupList,numberList= numberList,questionList= questionList,debug = data)
     #data saved from edit view and delete button
     updateFAQ = request.form.get('updateFAQ')
@@ -215,7 +215,7 @@ def faq():
     featureNames = data[2]
     pngList = buildPNGList()
     #return render_template('test.htm', debug = sessionID)
-    return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, postAddress = "/faq", debug = '')
+    return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, postAddress = "/faq", debug = '', course = "Statistics in Medicine")
 
 
 @app.route('/', methods=['GET'])
@@ -270,7 +270,7 @@ def statistical():
      featureNames = data[2]
      pngList = buildPNGList()
      wordList = createWordList()
-     return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics = int(algoValue), postAddress = "/statistical",wordList = wordList, debug = '')
+     return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics = int(algoValue), postAddress = "/statistical",wordList = wordList, debug = '', course = "Statistical Learning")
 
 @app.route('/medicine', methods=['GET', 'POST'])
 def medicine():
@@ -289,7 +289,7 @@ def medicine():
      pngList = buildPNGList()
      data = createUI()
      wordList = createWordList()
-     return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics = int(algoValue), postAddress = "/medicine", wordList = wordList, debug = '')
+     return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics = int(algoValue), postAddress = "/medicine", wordList = wordList, debug = '', course = "Statistics in Medicine")
 
 
 @app.route('/environmental', methods=['GET', 'POST'])
@@ -308,7 +308,7 @@ def environmental():
      featureNames = data[2]
      pngList = buildPNGList()
      wordList = createWordList()
-     return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics = int(algoValue), postAddress = "/environmental", wordList = wordList, debug = '')
+     return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics = int(algoValue), postAddress = "/environmental", wordList = wordList, debug = '', course = "Environmental Physiology")
 
 @app.route('/engineering', methods=['GET', 'POST'])
 def engineering():
@@ -326,7 +326,7 @@ def engineering():
      featureNames = data[2]
      pngList = buildPNGList()
      wordList = createWordList()
-     return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics = int(algoValue), postAddress = "/engineering",  wordList = createWordList(), debug = '')
+     return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics = int(algoValue), postAddress = "/engineering",  wordList = createWordList(), debug = '', course = "Introduction to Database")
 
 @app.route('/psych', methods=['GET', 'POST'])
 def psych():
@@ -344,7 +344,7 @@ def psych():
      featureNames = data[2]
      pngList = buildPNGList()
      wordList = createWordList()
-     return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics = int(algoValue), postAddress = "/psych",  wordList = createWordList(), debug = '')
+     return render_template('generateFAQBruno.htm', groupNumber= groupNumber,questionList= questionList,pngList=pngList,featureNames = featureNames, n_topics = int(algoValue), postAddress = "/psych",  wordList = createWordList(), debug = '', course = "Reservoir Geomechanics")
 
 
 @app.route('/query', methods=['GET', 'POST'])
