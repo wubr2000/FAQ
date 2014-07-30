@@ -40,8 +40,15 @@ height:300px;
     border-style: solid;
     border-color: #B5B5B5;
     border-width: 1px;
-    width:960px;
-    height:1000px;
+    /*width:960px;*/
+    width: 80%;
+    height:750px;
+    margin-left: 20px;
+    margin-right: 40px;
+    padding: 10px 10px 10px 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .faqHelper {
@@ -83,7 +90,6 @@ height:300px;
     height: 100px;
 }
 
-
 #center-logo{
     position: absolute;
     top: 50%;
@@ -93,4 +99,9 @@ height:300px;
     width: 100px;
     height: 100px;
 }​
+
+#indent-me{
+    margin-left: -50px;
+    margin-right: 50px;
+}
 

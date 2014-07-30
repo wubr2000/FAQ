@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional/EN">
 <html>
   <head>
-    <title>Untitled</title>
+    <title>FAQLY</title>
     <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
     <meta name="generator" content="PyScripter">
     <link href="/static/style.css" rel="stylesheet">
@@ -15,8 +15,6 @@
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
-    <script src="/static/javascripts/faq.js"></script>
 
     <title>Vega Scaffold</title>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
@@ -39,14 +37,16 @@
           <li><a href="/statistical"><i class="fa fa-users"></i>&nbsp;&nbsp;Statistical Learning</a></li>
           <li><a href="/medicine"><i class="fa fa-users"></i>&nbsp;&nbsp;Medicine and Statistics</a></li>
           <li><a href="/environmental"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;Environmental Physiology</a></li>
-          <li><a href="/engineering"><i class="fa fa-users"></i>&nbsp;&nbsp;Engineering</a></li>
-          <li><a href="/psych"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;Pscyhology</a></li>
-          <li><a href="/query"><i class="fa fa-rebel"></i>&nbsp;&nbsp;&nbsp;Real-time Query</a></li>
+          <li><a href="/engineering"><i class="fa fa-users"></i>&nbsp;&nbsp;Intro to Database</a></li>
+          <li><a href="/psych"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;Reservoir Geomechanics</a></li>
+          <li><a href="/query"><i class="fa fa-rebel"></i>&nbsp;&nbsp;&nbsp;<b>Real-time Query</b></a></li>
         </ul>
         </div>
 
 
         <!-- Page content -->
+
+        <!-- Page header -->
         <div id="page-content-wrapper">
         <div class="content-header">
           <h1>
@@ -60,107 +60,104 @@
         <!-- Keep all page content within the page-content inset div! -->
         <div class="page-content inset">
 
+          <!-- Page load spinner -->
+          <div id="waitingSpinner"><img src="/static/loader.gif" alt="waiting..."></img><p><b>Building model...</b></p><p><b>(Usually takes a minute)</b></p></div>
 
-
-
-            <div class="container_12 ">
-
-            {{text}}
-
-
-            <div >
-            <div class = "grid_3" id = "menu">
-
-            </div>
-
-            <div class = "grid_3 push_1 faqHelper">
-
-
-             </div>
-            <div class="clear"></div>
-            </div>
-
-            <br>
-            <div class = "faqHelper">
-            <form name="input" action="{{postAddress}}" method="post">
-                <button class="btn btn-success btn-lg" type="submit" name = "generateFAQ">Generate FAQ</button>
-                 <input id = "inputValue"  type="number" name="algoValue" value="{{n_topics}}">
-
-                </form>
-            </div>
-            
-
-            <div id="waitingSpinner"><img src="/static/loader.gif" alt="waiting..."></img><p>Building model...</p><p>(Usually takes a minute)</p></div>
-
-            <!-- change 5 to global variable for number of questions-->
-
-            {% for i in range(n_topics) %}
-            <div  class = "questionBox">
-
-            <br><br><br>
-
-
-            {% set subList = wordList[i] %}
-            {% for word in subList %}
-            
-             <button class="btn btn-primary btn-sm edit" type="button">{{word}}</button>
-            {% endfor %}
-            <br><br><br>
-
-           <div class = "grid_4 push_1">
-            <img  id = "histogram" src="{{pngList[i]}}" alt="some_text"> <br>
-            <div class="clear"></div>
-            <div class = "grid_3 " id = "vis{{i}}"> </div>
-             </div>
-
-
-            <div class = "grid_4 push_3">
-            {% for j in range(5) %}
-            <form name='' action='http://localhost:5000/edit' method='post' >
-               <!--<input type="checkbox" name="vehicle" value="Bike">-->  <span id = "questionText"> {{questionList[0][i][j][2][0:100]}} </span>
-
-
-               <span id = "hidden">
-                <input type="text" name="questionID" value = " {{questionList[0][i][j][1]}}">
-                <input type="text" name="question" value = " {{questionList[0][i][j][2]}}">
-                <input type="text" name="postAddress" value = " {{postAddress}}">
-               </span>
-
-
+            <!-- Generate FAQ Button -->
             <div>
-            <button type="submit" class="btn btn-default btn-sm edit" onclick = "show_popup()">edit/ view answers</button>
-               </form>
+              <form class = "form-horizontal" role = "form" name="input" action="{{postAddress}}" method="post">
+                
+                <div class="form-group">
+                  <div style="float: left;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<b>Number of Topics:</b>&nbsp; 
+                    <input id = "inputValue"  class = "form-control" type="number" name="algoValue" value="{{n_topics}}">
+                  </div>
+                </div>
+
+                <div>
+                  <button class="btn btn-success btn-lg" type="submit" name = "generateFAQ">Generate FAQ</button>
+                </div>
+        
+
+              </form>
             </div>
-            <br>
+
+            <!-- Box for Each Topic -->
+
+            <div class="row">
+            {% for i in range(n_topics) %}
+            
+              <div  class = "questionBox">
+
+                <div class="col-md-8">
+
+                  <h3>Topic #{{i+1}}</h3>
+
+                  {% set subList = wordList[i] %}
+                  {% for word in subList %}
+                    <button class="btn btn-primary btn-sm edit" type="button">{{word}}</button>
+                  {% endfor %}
+                  <br><br><br>
+
+                  <div class = "grid_4 push_1">
+                    <div class = "grid_3 " id = "vis{{i}}"></div>
+                    <img  id = "histogram" src="{{pngList[i]}}" alt="some_text">
+                  </div>
+
+                </div>
+
+                <div class="col-md-4">
+                  <br>
+                  <h3>FAQs for Topic #{{i+1}}</h3>
+                  <div class = "grid_4 push_3">
+                  {% for j in range(5) %}
+                  <form name='' action='/edit' method='post' >
+                     <span id = "questionText"> {{questionList[0][i][j][2][0:100]}} </span>
+
+                     <span id = "hidden">
+                      <input type="text" name="questionID" value = " {{questionList[0][i][j][1]}}">
+                      <input type="text" name="question" value = " {{questionList[0][i][j][2]}}">
+                      <input type="text" name="postAddress" value = " {{postAddress}}">
+                     </span>
+
+                    <div>
+                    <button type="submit" class="btn btn-default btn-sm edit" onclick = "show_popup()">view / edit answers</button>
+                    </div>
+                  </form>
+                  <br>
+                  {% endfor %}
+
+                  </div>
+
+                  <!--
+                  <form action="/" method="post">
+                   <span id = "hidden">
+                   <input  type="text" name="deleteQuestion">
+                   </span>
+                  <input class="btn btn-danger" type="submit" value="Delete">
+                  </form>
+                  <br>
+
+                  <form action="/" method="post">
+                  <input class="btn btn-danger" type="submit" value="Delete Group">
+                  <input hidden  type="text" name="groupID" value = "{{i}}" >
+                  </form>-->
+                </div>
+
+              </div>
+
             {% endfor %}
-
-            <!--
-            <form action="/" method="post">
-             <span id = "hidden">
-             <input  type="text" name="deleteQuestion">
-             </span>
-            <input class="btn btn-danger" type="submit" value="Delete">
-            </form>
-            <br>
-
-            <form action="/" method="post">
-            <input class="btn btn-danger" type="submit" value="Delete Group">
-            <input hidden  type="text" name="groupID" value = "{{i}}" >
-            </form>-->
-
-
-            </div>
-            </div>
-
-
-
-            {% endfor %}
-            <form name="input" action='http://localhost:5000/output' method="post">
+            
+            <form name="input" action='/output' method="post">
             <br>
             <input id = "finished"  class="btn btn-primary btn-lg" type="submit" value="Finished" target= '_blank' >
             </form>
 
+          </div>
+
         </div>
+
+      </div>
 
     </div>
 
@@ -195,6 +192,14 @@ $("#menu-toggle").click(function(e) {
       $("#wrapper").toggleClass("active");
 });
 
+//controls waiting spinner icon
+$(function () {
+  var $spinner = $('#waitingSpinner');
+
+  $('form.form-horizontal').on('submit', function (e) {
+    $spinner.show();
+  })
+})
 
 </script>
 
