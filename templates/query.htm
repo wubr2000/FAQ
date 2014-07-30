@@ -7,32 +7,94 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+    <meta name="generator" content="PyScripter">
+    <link href="/static/style.css" rel="stylesheet">
+    <link href="/static/960_12_col.css" rel="stylesheet">
+
+    <link href="/static/simple-sidebar.css" rel="stylesheet">
+    <link href="/static/font-awesome.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open Sans">
+
+    <script src="/static/javascripts/faq.js"></script>
+
+    <title>Vega Scaffold</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script src="http://d3js.org/d3.geo.projection.v0.min.js" charset="utf-8"></script>
+    <script src="http://trifacta.github.com/vega/vega.js"></script>
+    <script src="http://trifacta.github.io/vega/lib/topojson.js"></script>
+    <script src="http://trifacta.github.com/vega/editor/specs.js"></script>
+    <script src="http://trifacta.github.com/vega/lib/d3.layout.cloud.js"></script>
+
   </head>
 
   <body>
-  Ask Question
-  <form action="/query" method="post" id='query_box'>
-  <input class = "inputBox" type="text" name="queryI">
-  <input type="submit" value="Submit">
-  </form>
 
-  <div class="result">
-  {% for i in range(3) %}
-      {{closest_topics[i]}}
-      {{related_q[i]}}
-  {% endfor %}
+  <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand"><a href="/">Home</a></li>
+          <li><a href="/statistical"><i class="fa fa-users"></i>&nbsp;&nbsp;Statistical Learning</a></li>
+          <li><a href="/medicine"><i class="fa fa-users"></i>&nbsp;&nbsp;Medicine and Statistics</a></li>
+          <li><a href="/environmental"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;Environmental Physiology</a></li>
+          <li><a href="/engineering"><i class="fa fa-users"></i>&nbsp;&nbsp;Engineering</a></li>
+          <li><a href="/psych"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;Pscyhology</a></li>
+          <li><a href="/query"><i class="fa fa-rebel"></i>&nbsp;&nbsp;&nbsp;Real-time Query</a></li>
+        </ul>
+        </div>
+
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+        <div class="content-header">
+          <h1>
+            <div id = "top">
+                <a id="menu-toggle" href="#"><i class="fa fa-bars"></i></a>
+                <img src="/static/faqly_logo.png" alt="faq_logo"></img>
+            </div>
+          </h1>
+        </div>
+
+        <!-- Keep all page content within the page-content inset div! -->
+        <div class="page-content inset">
+
+        <br><br><br>
+        <h3>Post A Question For the Class Forum</h3>
+        <form class = "form-horizontal" role = "form" action="/query" method="post" id='query_box'>
+          <div class="form-group">
+            <div class="col-sm-10">
+              <input id="inputBox" class = "form-control" type="text" name="queryI" placeholder="Post Your Question Here">
+            </div>
+          </div>
+        </form>
+
+        <div class="result"></div>
+
   </div>
 
   </body>
 
 
 <script type="text/javascript">
-
-  $(".inputBox").keyup(function() {
+  //Autocomplete script
+  $("#inputBox").keyup(function() {
     $.post( "/autocomplete", $( "#query_box" ).serialize(), function( data ) {
       $( ".result" ).html( data );
     });
   });
+
+  //menu toggle function
+  $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+  });
+
 
 </script>
 

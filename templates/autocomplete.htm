@@ -1,8 +1,25 @@
-<div class="result">
-  {% for i in range(3) %}
-      <br><br>
-      {{closest_topics[i]}}
-      <br><br>
-      {{related_q[i]}}
-  {% endfor %}
-</div>
+<br>
+<h3>Before You Post, Below Are Some Related Topics and Previously Asked Questions</h3>
+<br>
+{% for i in range(3) %}
+    <div class="span4">
+      <h4>Closest Topic {{i+1}}:</h4>
+      {% for words in closest_topics[i] %}
+        <button class="btn btn-primary btn-sm edit" type="button">{{words}}</button>
+      {% endfor %}
+    </div>
+    <br>
+
+    <div class="span4">
+      <div class = "well well-small">
+        <h4>Previous Top Questions from Topic {{i+1}}:</h4>
+        {% for questions in related_q[i] %}
+        <ul class="list-group">
+          <li class="list-group-item">{{questions}}</li>
+        </ul>
+        {% endfor %}
+      </div>
+    </div>
+
+    <br>
+{% endfor %}
